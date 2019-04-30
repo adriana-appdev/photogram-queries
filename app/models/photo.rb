@@ -16,4 +16,8 @@ class Photo < ApplicationRecord
     def poster
         return User.where({:id => self.owner_id}).first
     end 
+    
+    def comments
+        return Comment.where({:photo_id => self.id})
+    end 
 end
