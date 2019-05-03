@@ -24,9 +24,15 @@ class Photo < ApplicationRecord
     def likes
         return Like.where({:photo_id => self.id})
     end 
+    #had problems applying this on the data- I believe because of the (s) at the end of likes # 
     
     def fans 
-        return Users.wher({})
+        fan_ids = self.likes.pluck(:fan_id)
+        return User.where({ :id => fan_ids })
     end
+    # I also had problems applying this method on Photo. I tried ID = 628#
     
+    def fan_list
+        return self.fans.pluck(:username).to_sentence
+    end 
 end
