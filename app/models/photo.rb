@@ -20,4 +20,13 @@ class Photo < ApplicationRecord
     def comments
         return Comment.where({:photo_id => self.id})
     end 
+    
+    def likes
+        return Like.where({:photo_id => self.id})
+    end 
+    
+    def fans 
+        return Users.wher({})
+    end
+    
 end
